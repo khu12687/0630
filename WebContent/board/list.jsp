@@ -2,9 +2,9 @@
 <%@page import="com.the.model.board.Board"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%! BoardDAO reBoardDAO =new BoardDAO(); %>
+<%! BoardDAO boardDAO =new BoardDAO(); %>
 <%
-	List<Board> boardList = BoardDAO.selectAll();
+	List<Board> boardList = boardDAO.selectAll();
 %>
 <%
 	//페이징 처리에 필요한 변수 선언 및 페이지 분할 계산
@@ -56,7 +56,7 @@ a{text-decoration:none;}
 <script>
 $(function(){
 	$("button").click(function(){
-		location.href="/reboard/registForm.jsp";
+		location.href="/board/registForm.jsp";
 	});
 });
 </script>
@@ -74,18 +74,18 @@ $(function(){
 		</tr>
 		<%for(int i=1; i<=pageSize; i++){ %>
 		<%if(num<1)break; %>
-		<%ReBoard reboard=boardList.get(curPos++); %>
+		<%Board board=boardList.get(curPos++); %>
 		<tr>
 			<td><%=num-- %></td>
 			<td>
-				<%if(reboard.getDepth()>0){ //답변일때만...%>
-				<img style="margin-left:<%=20*reboard.getDepth()%>px" src="/images/reply.png" width="20px"/>
+				<%if(board.getDepth()>0){ //답변일때만...%>
+				<img style="margin-left:<%=20*board.getDepth()%>px" src="/images/reply.png" width="20px"/>
 				<%} %>
-				<a href="/reboard/content.jsp?reboard_id=<%=reboard.getReboard_id()%>"><%= reboard.getTitle() %></a>
+				<a href="/board/content.jsp?board_id=<%=board.getBoard_id()%>"><%= board.getTitle() %></a>
 			</td>
-			<td><%= reboard.getWriter() %></td>
-			<td><%= reboard.getRegdate().substring(0,10) %></td>
-			<td><%= reboard.getHit() %></td>
+			<td><%= board.getWriter() %></td>
+			<td><%= board.getRegdate().substring(0,10) %></td>
+			<td><%= board.getHit() %></td>
 		</tr>
 		<%} %>
 		<tr>
@@ -96,14 +96,14 @@ $(function(){
 		<tr>
 			<td colspan="5" style="text-align:center;">
 				<%if(firstPage>1){ %>
-				<a href="/reboard/list.jsp?currentPage=<%=firstPage-1%>">◀</a>
+				<a href="/board/list.jsp?currentPage=<%=firstPage-1%>">◀</a>
 				<%} %>
 				<%for(int i=firstPage; i<=lastPage; i++){ %>
 				<%if(i>totalPage)break; %>
-				<a <%if(i==currentPage){%>class="pageStyle"<%}%> href="/reboard/list.jsp?currentPage=<%=i %>">[<%=i %>]</a>
+				<a <%if(i==currentPage){%>class="pageStyle"<%}%> href="/board/list.jsp?currentPage=<%=i %>">[<%=i %>]</a>
 				<%} %>
 				<%if(lastPage<totalPage){ %>
-				<a href="/reboard/list.jsp?currentPage=<%=lastPage+1%>">▶</a>
+				<a href="/board/list.jsp?currentPage=<%=lastPage+1%>">▶</a>
 				<%} %>
 			</td>
 		</tr>

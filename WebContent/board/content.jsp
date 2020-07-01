@@ -1,12 +1,12 @@
-<%@page import="com.study.model.reboard.MybatisReBoardDAO"%>
-<%@page import="com.study.model.reboard.ReBoard"%>
+<%@page import="com.the.model.board.Board"%>
+<%@page import="com.the.model.board.BoardDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%!
-	MybatisReBoardDAO reboardDAO = new MybatisReBoardDAO();
+	BoardDAO boardDAO = new BoardDAO();
 %>
 <%
-	int reboard_id = Integer.parseInt(request.getParameter("reboard_id"));
-	ReBoard reboard = reboardDAO.select(reboard_id);
+	int board_id = Integer.parseInt(request.getParameter("board_id"));
+	Board reboard = boardDAO.select(board_id);
 %>
 <!DOCTYPE html>
 <html>
