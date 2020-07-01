@@ -5,17 +5,21 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.the.model.board.Board" alias="Board"/>
+		<typeAlias type="com.the.model.board.Notice" alias="Notice"/>
 	</typeAliases>
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
       <dataSource type="JNDI">
-        <property name="data_source" value="java:comp/env/jdbc/mysql"/>
+        <property name="data_source" value="java:comp/env/jdbc/oracle"/>
 
       </dataSource>
     </environment>
   </environments>
   <mappers>
+  <!-- 
     <mapper resource="com/the/mybatis/BoardMapper.xml"/>
+    -->
+    <mapper resource="com/the/mybatis/NoticeMapper.xml"/>
   </mappers>
 </configuration>

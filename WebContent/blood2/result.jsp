@@ -1,4 +1,3 @@
-<%@page import="com.the.model.movie.MovieService"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	/*
@@ -9,12 +8,7 @@
 			디자인코드와 로직이 섞여 있기 때문에...
 			ex) 같은 프로그램을 스윙으로 만든다면?
 	*/
-	request.setCharacterEncoding("utf-8");
-	String movie = request.getParameter("movie");
-	
-	//로직은 여기서 짜지말고, 공통코드로 분리시켜놓은 객체를 재사용
-	MovieService movieService = new MovieService();
-	String msg = movieService.getAdivce(movie);
+
 	
 	/*
 	재사용가능한 코드를 객체로 분리시켜, 유지보수성을 높인 개발방식을
@@ -28,8 +22,22 @@
 	Model : 로직, 데이터
 	View : 디자인 
 	Controller : 디자인과 로직을 분리시켜주는 역할의 객체
-	*/
 	
+	
+	javaEE 분야에서 MVC패턴을 적용한 개발방법을 가리켜 모델 2방식이라 한다!!
+	MVC 패턴이란?
+		-재사용성과 유지보수성을 높이기 위해
+		 디자인과 로직을 완전히 분리키시는 개발 방법
+		 전산분야에서 잘 알려진 개발방법(선배들의 경험이 녹아든 패턴)
+		 
+	Model2 패턴?
+		-MVC 개발방법 이론을 자바EE의 기술로 반영한 개발패턴을 의미
+		
+	Model : .pojo(Plain Old Java Object:플랫폼에 중립적인 순수한 자바)
+	View : .jsp
+	Controller : .java(서블릿) 
+	*/
+	request.setCharacterEncoding("utf-8");
 %>
 <!DOCTYPE html>
 <html>
@@ -40,6 +48,6 @@
 </script>
 </head>
 <body>
-<%=msg %>
+<%=request.getAttribute("msg") %>
 </body>
 </html>

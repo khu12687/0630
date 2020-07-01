@@ -1,0 +1,14 @@
+#웹어플리케이션 애의 각 요청마다, 해당 요청을 담당할 하위
+#컨트롤러에 대한 명단!! (매핑정보)
+
+#컨트롤러 관련 매핑
+/movie.do=com.the.controller.movie.MovieController
+/blood.do=com.the.controller.blood.BloodController
+/notice/list.do=com.the.controller.notice.NoticeListController
+/notice/regist.do=com.the.controller.notice.NoticeRegistController
+
+#뷰페이지 매핑
+/view/movie=/movie2/result.jsp
+/view/blood=/blood2/result.jsp
+/view/notice/list=/notice/list.jsp
+/view/notice/regist=/notice/list.do
